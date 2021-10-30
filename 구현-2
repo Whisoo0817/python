@@ -1,0 +1,13 @@
+pos=input()
+row=pos[1]
+col=int(ord(pos[0]))-int(ord('a'))+1
+knight=(col,int(row))
+plus=[(2,1),(2,-1),(-2,1),(-2,-1),(1,-2),(1,2),(-1,2),(-1,-2)]
+count=0
+for i in range(8):
+    m=knight[0]+plus[i][0]
+    n=knight[1]+plus[i][1]
+    if m>=1 and m<=8 and n>=1 and n<=8:
+        count+=1
+print(count)
+
