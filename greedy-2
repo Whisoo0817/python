@@ -1,0 +1,22 @@
+a=input("입력:")
+b=list(map(int,a.split()))  #리스트 빼먹음 b는 리스트임
+N=b[0]#5개
+M=b[1]#8번
+K=b[2]#연속3번
+c=input("입력:")
+d=list(map(int,c.split()))
+#d=[2,4,5,4,6]
+d.sort() # 같은실수 e=d.sort() X->d.sort()는 d가 정렬된거지 새로운 리스트를 만드는게 아님
+fir=d[-1]
+sec=d[-2]
+sum=0
+while M>0:
+    if K>0:
+        sum+=fir
+        M-=1
+        K-=1
+    elif K==0:
+        sum+=sec
+        M-=1
+        K=3
+print(sum)
