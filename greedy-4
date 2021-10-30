@@ -1,0 +1,11 @@
+n,k=map(int,input().split())
+stack=0
+while n>1:
+    if n%k==0:
+        n//=k
+        stack+=1
+    else:
+        n-=1
+        stack+=1
+print(stack)
+        
