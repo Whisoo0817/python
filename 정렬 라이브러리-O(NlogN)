@@ -1,0 +1,9 @@
+#시간복잡도 최소 O(NlogN)
+문제에서 별도의 요구가 없이 단순히 정렬해야 하는 상황-> 기본정렬라이브러리
+*데이터의 범위가 한정되어 있으며 더 빠르게 동작해야 하는 상황 -> 계수 정렬
+
+array = [('바나나',2),('사과',5),('당근',3)]
+def setting(data):
+  return data[1]
+result=sorted(array,key=setting) # sorted나sort 함수는 key매개변수 입력 가능(key값으로는 하나의 함수,이느 정렬의 기준이 된다)
+print(result)
