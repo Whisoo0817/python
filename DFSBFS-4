@@ -1,4 +1,4 @@
-from collections import deque #BFS는 큐,인접 탐색 
+from collections import deque #BFS는 큐,가까운거부터 탐색
 n,m=map(int,input().split())
 graph=[]
 for i in range(n):
