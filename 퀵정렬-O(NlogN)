@@ -12,3 +12,5 @@ def quick_sort(array):
 
     return quick_sort(left_side) + [pivot] + quick_sort(right_side)
 print(quick_sort(array))
+
+#O(NlogN)은 평균, N^2 될 수도 있음
