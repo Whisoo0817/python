@@ -1,0 +1,8 @@
+N=int(input())
+array=[]
+for i in range(N):
+    array.append(int(input()))
+array=sorted(array,reverse=True) #파이썬 기본 정려 라이브러리를 이용하는게 제일 간단함
+
+for i in array:
+    print(i,end=' ')
