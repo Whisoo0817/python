@@ -1,3 +1,6 @@
+#문제의 범위가 엄청 크다(억단위)->이진탐색
+ 순차탐색도 가능하지만 문제에서 절단기으 높이가 최대 10억->순차탐색 쓰면 시간초과
+ 
 n,m=map(int,input().split())
 array=list(map(int,input().split()))
 start=0
@@ -10,8 +13,8 @@ while start<=end:
         if i>mid:
             total+=(i-mid)
     if total<m:
-        end=mid-1
+        end=mid-1 # ***
     else:
         result=mid #최대한 덜 잘랐을 때가 정답
-        start=mid+1
+        start=mid+1 #***
 print(result)
