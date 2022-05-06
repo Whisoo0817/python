@@ -1,0 +1,13 @@
+n,m=map(int,input().split())
+k=[]
+for i in range(n):
+    k.append(int(input()))
+d=[100001]*(m+1) #100001은 불가능한 개수,d[0]도 있어서 m+1
+d[0]=0
+for i in range(n):
+    for j in range(k[i],m+1):
+            d[j]=min(d[j],d[j-k[i]]+1) #*****
+if d[m]==100001:
+    print(-1)
+else:
+    print(d[m])
