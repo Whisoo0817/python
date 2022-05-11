@@ -1,0 +1,27 @@
+import sys
+import heapq
+input=sys.stdin.reanline
+INF=int(1e9)
+
+n,m,c=map(int,input().split())
+graph=[[] for _ in range(n+1)]
+for i in range(m):
+    x,y,z=map(int,input().split())
+    graph[x].append((y,z))
+distance=[INF]*(n+1)
+
+def dijkstra(start):
+    q=[]
+    heapq.heappush(q,(0,start)) #최소 힙->거리가 작은것부터-> 앞이 거리,뒤가 노드
+    distance[start]=0
+    while q:
+        dist,now=heappop(q)
+        if distance[now]<dist:#처리된 적이 있으면(원래는 INF)
+            continue #넘어가기
+        for i in graph[now]: #최단거리를 찾은 노드를 이용해서 근접 노드들 최단거리 찾기*********
+            cost=dist+i[1]
+            if cost<distance[i[0]]:
+                distance[i[0]]=cost
+                heapq.heappush(q,(cost,i[0]))
+dijkstra(start)
+
