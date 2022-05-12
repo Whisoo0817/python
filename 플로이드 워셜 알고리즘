@@ -1,4 +1,8 @@
 #시간복잡도:O(N^3)
+다익스트라 : 한 지점에서 다 다른 특정 지점까지으 최단경로
+플로이드 워셜 : 모든 지점에서 다르 모든 지점까지으 최단경로
+
+
 INF=int(1e9)
 n=int(input())
 m=int(input())
@@ -13,7 +17,7 @@ for _ in range(m): #간선 정보 입력
     a,b,c=map(int,input().split())
     graph[a][b]=c #a에서 b로 가는 비용이 c
 
-for k in range(1,n+1): #***점화식:D(ab) = min( D(ab),D(ak) + D(kb)) k거쳐서 가는 루트랑 비교
+for k in range(1,n+1):                  #***점화식:D(ab) = min( D(ab),D(ak) + D(kb)) k거쳐서 가는 루트랑 비교
     for a in range(1,n+1):
         for b in range(1,n+1):
             graph[a][b]=min(graph[a][b],graph[a][k]+graph[k][b])
