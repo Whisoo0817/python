@@ -25,3 +25,11 @@ def dijkstra(start):
                 heapq.heappush(q,(cost,i[0]))
 dijkstra(start)
 
+count=0
+p=[]
+for d in distance:
+    if d != INF:
+        count+=1
+        p.append(d)
+print(count-1,max(p))
+
