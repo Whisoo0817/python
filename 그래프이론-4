@@ -1,0 +1,31 @@
+from collections import deque
+import copy
+
+
+v=int(input())
+indegree=[0]*(v+1)
+graph=[[] for i in range(v+1)]
+time=[0]*(v+1)
+for i in range(1,v+1):
+    data=list(map(int,input().split()))
+    time[i]=data[0]
+    for x in data[1:-1]: #***시간이랑 -1뻬고
+        indegree[i]+=1 #***선수과목 개수만큼
+        graph[x].append(i) #x->i
+
+def topology_sort():
+    result=copy.deepcopy(time) #리스트 값을 복제할때는 deepcopy()
+    q=deque() #***()
+    for i in range(1,v+1):
+        if indegree[i]==0:
+            q.append(i)
+    while q:
+        now=q.popleft()
+        for i in graph[now]:
+            result[i]=max(result[i],result[now]+time[i]) #선수과목이 2개 이상일때를 대비해서 max
+            indegree[i]-=1
+            if indegree[i]==0:
+                q.append(i)
+    for i in range(1,v+1):
+        print(result[i])
+topology_sort()
