@@ -1,0 +1,5 @@
+num=list(map(int,input()))
+res=max(num[0]+num[1],num[0]*num[1])
+for i in range(2,len(num)):
+    res=max(res+num[i],res*num[i])
+print(res)
