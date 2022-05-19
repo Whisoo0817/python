@@ -1,0 +1,10 @@
+n=int(input())
+m=list(map(int,input().split()))
+m.sort() # 1 1 2 3 9
+target=1
+for i in m:  #예시로 target=5라는 것은 1~4를 모두 만들 수 있어서 다음 타겟이 5라는 뜻
+    if i<=target: #타겟이 8(=1~7까지 만들 수 있는 상황)인데 다음 i가 9이상이면 8을 만들수없음
+        target+=i
+    else:
+        break
+print(target)
