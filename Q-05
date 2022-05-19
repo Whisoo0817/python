@@ -1,0 +1,10 @@
+n,m=map(int,input().split())
+k=list(map(int,input().split()))
+result=0
+for i in range(n-1):
+    h=i+1
+    while h<=(n-1):
+        if k[i]!=k[h]:
+            result+=1
+        h+=1
+print(result)
