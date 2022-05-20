@@ -1,0 +1,13 @@
+n=list(input())
+sum=0
+answer=''
+q=[]
+for i in n:
+    if i.isalpha(): #==True 빼도됨
+        q.append(i)
+    else:
+        sum+=int(i)
+q.sort()
+for i in q:
+    answer+=i
+print(answer+str(sum))
