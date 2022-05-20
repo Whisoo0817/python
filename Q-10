@@ -1,0 +1,29 @@
+from collections import deque
+s=input()
+def solution(s):
+    dp = [len(s)] * 501
+    for i in range(1,len(s)//2+1):
+        q=deque(s)
+        q2=[]
+        answer=''
+        while q:
+            result=''
+            for _ in range(i):
+                if len(q)>0:
+                    result+=q.popleft()
+            q2.append(result) #q2=[ab,ab,cd,cd]
+        num=0
+        stack=0
+        for j in range(len(q2)-1):
+            if q2[j]==q2[j+1] and stack==0:
+                num+=1
+                stack+=1
+                dp[i]-=i
+            elif q2[j]==q2[j+1] and stack!=0:
+                stack+=1
+                dp[i] -= i
+            else:
+                stack=0
+        dp[i]+=num
+    print(min(dp))
+solution(s)
