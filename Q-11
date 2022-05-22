@@ -1,0 +1,55 @@
+n=int(input())
+k=int(input())
+data=[[0]*(n+1) for _ in range(n+1)]
+info=[]
+
+for _ in range(k):
+    x,y=map(int,input().split())
+    data[x][y]=1
+
+l=int(input())
+for _ in range(l):
+    x,c=input().split()
+    info.append((int(x),c))
+
+def turn(direction,c):
+    if c=="L":
+        direction = (direction-1)%4 #동 남 서 북 -> 0 1 2 3
+    else:
+        direction = (direction+1)%4
+    return direction
+
+dx=[0,1,0,-1]
+dy=[1,0,-1,0]
+def solution():
+    x,y=1,1
+    data[x][y]=2
+    direction=0 #동쪽
+    time=0
+    snake=1 #뱀 길이
+    past = [(1, 1)]  # 과거경로
+    while True:
+        nx = x + dx[direction]
+        ny = y + dy[direction]
+        x=nx
+        y=ny
+        if 1<=nx and nx<=n and 1<=ny and ny<=n and data[nx][ny]!=2: #벽과 몸 충돌 아니면
+            if data[nx][ny]==1: #사과 만났을때
+                snake+=1
+                data[nx][ny]=2
+                past.append((nx,ny))
+            else:
+                data[nx][ny]=2
+                past.append((nx,ny))
+                px=past[-(snake+1)][0]
+                py=past[-(snake+1)][1]
+                data[px][py]=0
+        else:
+            time+=1
+            break
+        time+=1
+        for i in info: #회전
+            if time == i[0]:
+                direction = turn(direction, i[1])
+    return time
+print(solution())
