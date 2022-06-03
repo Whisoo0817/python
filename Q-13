@@ -1,0 +1,33 @@
+from itertools import combinations
+n,m=map(int,input().split())
+data=[]
+for _ in range(n):
+    data.append(list(map(int,input().split())))
+
+def solution(data,m):
+    result=[]
+    house=[]
+    bbq=[]
+    for i in range(n):
+        for j in range(n):
+            if data[i][j]==1:
+                house.append((i,j))
+    for i in range(n):
+        for j in range(n):
+            if data[i][j]==2:
+                bbq.append((i,j))
+    combination=list(combinations(bbq,m))
+
+    def get_sum(house,bbq_m):
+        sum=0
+        for x in house:
+            distance=[]
+            for y in bbq_m:
+                distance.append(abs(x[0]-y[0])+abs(x[1]-y[1]))
+            sum+=min(distance)
+        return sum
+    for combi in combination:
+        result.append(get_sum(house,combi))
+    return min(result)
+
+print(solution(data,m))
