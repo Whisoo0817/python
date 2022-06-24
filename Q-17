@@ -1,0 +1,28 @@
+n,k=map(int,input().split())
+data=[]
+for _ in range(n):
+    data.append(list(map(int,input().split())))
+s,x,y=map(int,input().split())
+
+dx=[-1,0,1,0]
+dy=[0,-1,0,1]
+def virus(k):
+    for num in range(1,k+1): #k부터 1(0+1)까지 -1씩
+        temp = [[0] * n for _ in range(n)]
+        for i in range(n):
+            for j in range(n):
+                if data[i][j]==num:
+                    temp[i][j]=num
+        for i in range(n):
+            for j in range(n):
+                if temp[i][j]>0:
+                    for u in range(4):
+                        ni = i + dx[u]
+                        nj = j + dy[u]
+                        if ni >= 0 and ni < n and nj >= 0 and nj < n:
+                            if data[ni][nj]==0:
+                                data[ni][nj]=num
+    return data
+for _ in range(s):
+    virus(k)
+print(data[x-1][y-1])
