@@ -1,0 +1,32 @@
+#*****모든 값을 조사해야하므로 DFS(재귀(지도에서 상하좌우 똑같음))
+n=int(input())
+a=list(map(int,input().split()))
+add,sub,mul,div=map(int,input().split())
+result_max = -1e9        #10억(무한)
+result_min = 1e9
+def dfs(s,res):
+    s+=1
+    global result_max,result_min,add,sub,mul,div
+    if s==n:
+        result_max=max(res,result_max)
+        result_min=min(res,result_min)
+    else:
+        if add>0:
+            add-=1
+            dfs(s,res+a[s])      #add했을때 경우를 모두 조사했으므로 돌아와서 add+=1하고 sub했을때를 조사
+            add+=1
+        if sub>0:
+            sub-=1
+            dfs(s,res-a[s])
+            sub+=1
+        if mul>0:
+            mul -= 1
+            dfs(s, res*a[s])
+            mul+=1
+        if div>0:
+            div -= 1
+            dfs(s, int(res/a[s]))   # res//a[s] (X) -> //는 몫인데 음수가 들어가면 값이 바뀜
+            div+=1
+dfs(0,a[0])
+print(result_max)
+print(result_min)
