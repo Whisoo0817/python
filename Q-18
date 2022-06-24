@@ -1,0 +1,45 @@
+def check_right(w):
+    stack=0
+    for i in range(len(w)):
+        if w[i]==")":
+            stack-=1
+        else:
+            stack+=1
+        if stack<0:
+            return False
+    if stack==0:
+        return True
+    else:
+        return False
+def check_balance(w): #***
+    count=0 #왼쪽 괄호의 갯수
+    for i in range(len(w)):
+        if w[i]=="(":
+            count+=1
+        else:count-=1
+        if count==0:
+            return i
+def solution(w):
+    if check_right(w)==True:
+        return w
+    if w == "":
+        return ""
+    index=check_balance(w)
+    u=w[:index+1]           #***
+    v=w[index+1:]
+    if check_right(u)==True:
+        return u+solution(v)
+    else:
+        result="("
+        result+=v
+        result+=")"
+        new_u=list(u[1:-1]) #리스트 하는 이유->typeerror: 'str' object does not support item assignment
+        for n in range(len(new_u)):
+            if new_u[n] == "(":
+                new_u[n] = ")"
+            else:
+                new_u[n] = "("
+        result+="".join(new_u)
+    return result
+w="()))((()"
+print(solution(w))
