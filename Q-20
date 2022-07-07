@@ -1,0 +1,42 @@
+n=int(input())
+a=[]
+temp=[['X']*n for _ in range(n)]
+res='NO'
+for i in range(n):
+    a.append(list(input().split()))
+def test(map):
+    dx = [-1, 0, 1, 0]
+    dy = [0, 1, 0, -1]
+    for x in range(n):
+        for y in range(n):
+            if map[x][y]=='T':
+                for i in range(4):
+                    nx=x+dx[i]
+                    ny=y+dy[i]
+                    while nx >= 0 and nx < n and ny >= 0 and ny < n and map[nx][ny]!='O':
+                        if map[nx][ny]=='S':
+                            return False
+                        else:
+                            nx+=dx[i]
+                            ny+=dy[i]
+    return True
+def dfs(count):
+    global res
+    if count==3:
+        for x in range(n):
+            for y in range(n):
+                temp[x][y]=a[x][y]
+        if test(temp):
+            res='YES'
+        return
+
+    for i in range(n):
+        for j in range(n):
+            if a[i][j]=='X':
+                a[i][j]='O'
+                count+=1
+                dfs(count)
+                a[i][j]='X'
+                count-=1
+dfs(0)
+print(res)
