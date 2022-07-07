@@ -28,7 +28,7 @@ def dfs(count):
                 temp[x][y]=a[x][y]
         if test(temp):
             res='YES'
-        return
+        return      **********
 
     for i in range(n):
         for j in range(n):
