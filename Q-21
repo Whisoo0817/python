@@ -32,19 +32,18 @@ def process(xx,yy,graph):
         for j in range(n):
             if union[i][j]==1:
                 A[i][j]=k
-
 while True:
     B=[[0]*n for _ in range(n)]
     for i in range(n):
         for j in range(n):
             B[i][j]=A[i][j]
-    union2 = [[-1] * n for _ in range(n)]
+    union2 = [[-1] * n for _ in range(n)] #while문 한바퀴마다 초기화(인구이동이 한번 할때 여러 파티로 진행될수있으므로 따로 하기위해서)
     changed=0
     for i in range(n):
         for j in range(n):
-            union = [[-1] * n for _ in range(n)]
-            if union2[i][j]==-1:
-                process(i,j,B)
+            union = [[-1] * n for _ in range(n)] #프로세스 한번 돌릴때마다 초기화
+            if union2[i][j]==-1: #***
+                process(i,j,B) #프로세스는 B로 돌리고 결과만 A에 반영
     if changed>0:
         total_count+=1
     else:
