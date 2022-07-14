@@ -1,0 +1,52 @@
+from collections import deque
+n,l,r=map(int,input().split())
+A=[]
+for x in range(n):
+    A.append(list(map(int,input().split())))
+dx=[1,0,-1,0]
+dy=[0,1,0,-1]
+changed=0
+total_count=0
+def process(xx,yy,graph):
+    global changed
+    union[xx][yy]=1
+    q=deque()
+    q.append((xx,yy))
+    sum=graph[xx][yy]
+    count=1
+    while q:
+        x,y=q.popleft()
+        for i in range(4):
+            nx=x+dx[i]
+            ny=y+dy[i]
+            if nx>=0 and nx<n and ny>=0 and ny<n and union[nx][ny]==-1:
+                if abs(graph[x][y]-graph[nx][ny])>=l and abs(graph[x][y]-graph[nx][ny])<=r:
+                    q.append((nx,ny))
+                    count+=1
+                    sum+=graph[nx][ny]
+                    union[nx][ny]=1
+                    union2[nx][ny]=1
+                    changed+=1
+    k=int(sum/count)
+    for i in range(n):
+        for j in range(n):
+            if union[i][j]==1:
+                A[i][j]=k
+
+while True:
+    B=[[0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            B[i][j]=A[i][j]
+    union2 = [[-1] * n for _ in range(n)]
+    changed=0
+    for i in range(n):
+        for j in range(n):
+            union = [[-1] * n for _ in range(n)]
+            if union2[i][j]==-1:
+                process(i,j,B)
+    if changed>0:
+        total_count+=1
+    else:
+        break
+print(total_count)
