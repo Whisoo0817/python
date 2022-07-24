@@ -1,0 +1,17 @@
+n=int(input())
+village=list(map(int,input().split()))
+distance=[0]*n
+for i in range(n):
+    for j in range(n):
+        distance[i]+=abs(village[i]-village[j])
+result=[]
+for i in range(n):
+    if distance[i]==min(distance):
+        result.append(village[i])
+print(min(result))
+
+'''n=int(input())
+village=list(map(int,input().split()))
+village.sort()
+
+print(data[(n-1)//2])'''
