@@ -10,7 +10,7 @@ for i in range(n-1):
     list.remove(list[0])
     list.remove(list[0])
 print(result)
-
+#우선순위 큐는 원소를 넣었다 빼는 것만으로도 정렬된 결과를 얻으 수 있다(heapq 힙 자료구조) *****
 '''import heapq
 n=int(input())
 heap=[]
