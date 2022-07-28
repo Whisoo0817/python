@@ -1,0 +1,14 @@
+n=int(input())
+a=list(map(int,input().split()))
+def solution(array,start,end):
+    mid=(start+end)//2
+    while start<=end:
+        if array[mid]==mid:
+            return mid
+        elif array[mid]>mid:
+            return solution(array,start,mid-1) #***********함수의 결과값을 출력하려면 return(재귀함수에서 주의!)
+        else:
+            return solution(array,mid+1,end)
+    return None
+if solution(a,0,n-1)==None:print(-1)
+else:print(solution(a,0,n-1))
