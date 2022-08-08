@@ -1,0 +1,23 @@
+n=int(input())
+dp=[0,1]
+def solution(a):
+    if a>1000:
+        return
+    a*=2
+    if a not in dp and a<1000:
+        dp.append(a)
+    solution(a)
+    a=int(a/2)
+    a*=3
+    if a not in dp and a<1000:
+        dp.append(a)
+    solution(a)
+    a=int(a/3)
+    a *= 5
+    if a not in dp and a<1000:
+        dp.append(a)
+    solution(a)
+    a=int(a/5)
+solution(1)
+dp.sort()
+print(dp[n])
