@@ -1,0 +1,21 @@
+INF=int(1e9)
+n=5
+m=14
+distance=[[INF]*(n+1) for _ in range(n+1)]
+for h in range(m):
+    a,b,c=map(int,input().split())
+    if c<distance[a][b]:
+        distance[a][b]=c #최소간선만 저장 (중복되는 입력값이 존재함)
+for i in range(1,n+1):
+    distance[i][i]=0
+for k in range(1,n+1):
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            distance[i][j]=min(distance[i][j],distance[i][k]+distance[k][j]) #***
+for a in range(1,n+1):
+    for b in range(1,n+1):
+        if distance[a][b]==INF:
+            print(0,end=' ')
+        else:
+            print(distance[a][b],end=' ')
+    print()
