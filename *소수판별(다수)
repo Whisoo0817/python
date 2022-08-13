@@ -1,11 +1,11 @@
 #다수의 소수 찾을때 사용
 #메모리 많이 필요(n만큼 리스트 할당)
 #주로 n이 1,000,000 이하일 때
-import math
+import math #***
 n=1000
 array=[True for i in range(n+1)]
 
-for i in range(2,int(math.sqrt(n))+1):
+for i in range(2,int(math.sqrt(n))+1): #*****
     if array[i]==True:
         j=2
         while i*j<=n:
@@ -14,3 +14,18 @@ for i in range(2,int(math.sqrt(n))+1):
 for i in range(2,n+1):
     if array[i]:
         print(i,end=' ')
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+#m~n 소수 찾기
+import math
+m,n=map(int,input().split())
+array=[True]*(n+1)
+array[0]=array[1]=False
+for i in range(2,int(math.sqrt(n))+1):
+    if array[i]==True:
+        j=2
+        while i*j<=n:
+            array[i*j]=False
+            j+=1
+for i in range(m,n+1):
+    if array[i]==True:
+        print(i)
