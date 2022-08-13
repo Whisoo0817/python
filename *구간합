@@ -1,0 +1,11 @@
+#구간합을 여러번 구해야할 경우 (여러번 사용될 만한 정보는 미리 구해 저장해 놓는 것이 유리)
+n=5
+data=[10,20,30,40,50]
+sum_value=0
+prefix_sum=[0]
+for i in data:
+    sum_value+=i
+    prefix_sum.append(sum_value)
+left=3
+right=4
+print(prefix_sum[right]-prefix_sum[left-1])
