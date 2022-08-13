@@ -15,7 +15,7 @@ import itertools
 vowel=['a','e','i','o','u']
 l,c=map(int,input().split())
 array=list(input().split())
-array.sort()
+array.sort() #처음부터 정렬해야 나중에 복잡하게 정렬 x
 for password in itertools.combinations(array,l):
     count=0
     for i in password:
