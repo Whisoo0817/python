@@ -1,0 +1,25 @@
+#순열
+import itertools
+data=[1,2]
+for x in itertools.permutations(data,2): #permutations
+print(list(x)) #리스트로 씌우기
+
+#조합 
+import itertools
+data=[1,2,3]
+for x in itertools.combinations(data,2): #combinations
+  print(list(x),end=' ')
+
+#예제 암호만들기(page 486)
+import itertools
+vowel=['a','e','i','o','u']
+l,c=map(int,input().split())
+array=list(input().split())
+array.sort()
+for password in itertools.combinations(array,l):
+    count=0
+    for i in password:
+        if i in vowel:
+            count+=1
+    if count>=1 and count<=l-2:
+        print(''.join(password)) #*****
