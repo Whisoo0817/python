@@ -1,0 +1,29 @@
+arr=[14,7,3,12,9,11,6,2]
+def merge_sort(list):
+    if len(list)<=1:
+        return list
+    m=len(list)//2
+    Left=list[:m]
+    Right=list[m:]
+    Left=merge_sort(Left)
+    Right=merge_sort(Right)
+    return merge(Left,Right)
+
+def merge(Left_list,Right_list):
+    result=[]
+    while len(Left_list)>0 or len(Right_list)>0:
+        if len(Left_list)>0 and len(Right_list)>0:
+            if Left_list[0]<Right_list[0]:
+                result.append(Left_list[0])
+                Left_list.remove(Left_list[0])
+            else:
+                result.append(Right_list[0])
+                Right_list.remove(Right_list[0])
+        elif len(Left_list)>0:
+            result.append(Left_list[0])
+            Left_list.remove(Left_list[0])
+        elif len(Right_list)>0:
+            result.append(Right_list[0])
+            Right_list.remove(Right_list[0])
+    return result
+print(merge_sort(arr))
