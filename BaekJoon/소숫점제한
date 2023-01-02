@@ -1,0 +1,14 @@
+num=int(input())
+for i in range(num):
+    a=list(map(int,input().split()))
+    student=a[0]
+    sum1,result=0,0
+    for j in range(1,student+1):
+        sum1+=a[j]
+    average=sum1/student
+    for k in range(1, student + 1):
+        if a[k]>average:
+            result+=1
+    v=round((result/student)*100,3)
+    print(f"{v:.3f}",end="")
+    print("%")
