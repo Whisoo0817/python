@@ -1,0 +1,18 @@
+num=int(input())
+result=num
+for i in range(num):
+    a=[0]*26
+    r=input()
+    for i in range(len(r)):
+        if i==(len(r)-1):
+            if a[ord(r[i])-97]==1:
+                result-=1
+                break
+        else:
+            if ord(r[i+1]) != ord(r[i]):
+                if a[ord(r[i])-97]==1:
+                    result-=1
+                    break
+                else:
+                    a[ord(r[i]) - 97] = 1
+print(result)
