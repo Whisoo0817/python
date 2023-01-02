@@ -1,0 +1,16 @@
+dp=[]
+for i in range(10000):
+    dp.append(0)
+def d(n):
+    str_n=str(n)
+    new=n
+    for i in range(len(str_n)):
+        new+=int(str_n[i])
+    if new<10000:
+        dp[new]+=1
+    return new
+for i in range(10000):
+    d(i)
+for i in range(10000):
+    if dp[i]==0:
+        print(i)
