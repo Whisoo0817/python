@@ -1,0 +1,8 @@
+Number=['ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ']
+a=list(input())
+result=0
+for i in range(len(a)):
+    for j in range(8):
+        if a[i] in Number[j]:
+            result+=(j+3)
+print(result)
