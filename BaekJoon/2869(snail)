@@ -1,0 +1,9 @@
+a,b,v=map(int,input().split())
+d=a-b
+if v/d % 1==0:
+    day=v//d
+else:
+    day=v//d+1
+k=(day*d+b-v)/d
+k=int(k//1)
+print(day-k)
