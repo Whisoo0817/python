@@ -1,0 +1,34 @@
+import sys
+n = int(sys.stdin.readline())
+unsorted = []
+for i in range(n):
+    unsorted.append(int(sys.stdin.readline()))
+
+def merge_sort(list):
+    if len(list) <= 1:
+        return list
+    m = len(list)//2
+    Left = list[:m]
+    Right = list[m:]
+    Left = merge_sort(Left)
+    Right = merge_sort(Right)
+    return merge(Left, Right)
+
+def merge(left, right):
+    merged_list = []
+    l=h=0
+
+    while l < len(left) and h < len(right):
+        if (left[l] < right[h]):
+            merged_list.append(left[l])
+            l+=1
+        else:
+            merged_list.append(right[h])
+            h+=1
+    merged_list += left[l:]
+    merged_list += right[h:]
+    return merged_list
+result_list = merge_sort(unsorted)
+for i in result_list:
+    print(i)
+
