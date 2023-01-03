@@ -1,0 +1,15 @@
+n=int(input())
+x = n // 5  # 5*3
+y = n % 5  # 3*1
+while True:
+    w=y//3
+    z=y%3
+    if z==0:
+        print(x+w)
+        break
+    else:
+        x-=1
+        y+=5
+        if x<0:
+            print(-1)
+            break
