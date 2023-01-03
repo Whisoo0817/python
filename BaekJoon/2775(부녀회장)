@@ -1,0 +1,21 @@
+T=int(input())
+def sol(k,n,a):
+    if a[k][n-1]!=0:
+        return a[k][n-1]
+
+    result=0
+    for i in range(1,n+1):
+        result+=sol(k-1,i,a) #주의# 이거 안하면 memorization이 아님
+    a[k][n-1]=result
+    return result
+for i in range(T):
+    k=int(input())
+    n=int(input())
+    a=[]
+    b=[]
+    for i in range(1,n+1):
+        b.append(i)
+    a.append(b)
+    for i in range(k):
+        a.append([0]*n)
+    print(sol(k,n,a))
