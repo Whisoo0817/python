@@ -9,21 +9,19 @@ def merge_sort(list):
     Right=merge_sort(Right)
     return merge(Left,Right)
 
-def merge(Left_list,Right_list):
-    result=[]
-    while len(Left_list)>0 or len(Right_list)>0:
-        if len(Left_list)>0 and len(Right_list)>0:
-            if Left_list[0]<Right_list[0]:
-                result.append(Left_list[0])
-                Left_list.remove(Left_list[0])
-            else:
-                result.append(Right_list[0])
-                Right_list.remove(Right_list[0])
-        elif len(Left_list)>0:
-            result.append(Left_list[0])
-            Left_list.remove(Left_list[0])
-        elif len(Right_list)>0:
-            result.append(Right_list[0])
-            Right_list.remove(Right_list[0])
-    return result
+def merge(left, right):
+    merged_list = []
+    l=h=0
+
+    while l < len(left) and h < len(right):
+        if (left[l] < right[h]):
+            merged_list.append(left[l])
+            l+=1
+        else:
+            merged_list.append(right[h])
+            h+=1
+    merged_list += left[l:]
+    merged_list += right[h:]
+    return merged_list
+    
 print(merge_sort(arr))
