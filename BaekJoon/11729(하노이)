@@ -1,0 +1,22 @@
+import sys
+input = sys.stdin.readline
+n = int(input())
+global res
+res=0
+res2=[]
+def hanoi(n,a,b,c): # (개수,출발지,나머지,목적지)
+    global res
+    if n==1:
+        res2.append([a,c])
+        res+=1
+        return True
+    hanoi(n-1,a,c,b)
+    res2.append([a,c])
+    res+=1
+    hanoi(n-1,b,a,c)
+
+hanoi(n,1,2,3)
+
+print(res)
+for i in res2:
+    print(i[0], i[1])
