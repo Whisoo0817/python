@@ -1,0 +1,13 @@
+18870번의 두번째 풀이
+
+import sys
+input=sys.stdin.readline
+
+N=int(input()) # 5
+arr=list(map(int,input().split())) # 2 4 -10 4 -9
+sort_arr=sorted(set(arr)) # -10 -9 2 4
+
+arr_dict={v:k for k,v in enumerate(sort_arr)} #원래 index가 앞인데 위치 바꿈
+# {-10: 0, -9: 1, 2: 2, 4: 3}
+for i in arr:
+    print(arr_dict[i],end=' ') # 딕셔너리는 key값을 넣으면 value가 나옴
