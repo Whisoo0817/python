@@ -1,0 +1,8 @@
+import sys
+count = [0]*10
+num = sys.stdin.readline().rstrip()
+for i in num:
+    count[int(i)]+=1
+for i in range(9,-1,-1):
+    for _ in range(count[i]):
+        print(i,end='')
