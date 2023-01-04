@@ -1,0 +1,11 @@
+import sys
+num = int(sys.stdin.readline())
+sl = []
+for i in range(num):
+    a = sys.stdin.readline().rstrip()
+    len_a = len(a)
+    if [a,len_a] not in sl:
+        sl.append([a, len_a])
+sl.sort(key=lambda x: (x[1],x[0]))
+for i in sl:
+    print(i[0])
