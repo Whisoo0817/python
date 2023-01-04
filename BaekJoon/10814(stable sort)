@@ -1,0 +1,9 @@
+import sys
+num = int(sys.stdin.readline())
+sl = []
+for i in range(num):
+    age, name = sys.stdin.readline().split()
+    sl.append([age,name])
+sl.sort(key=lambda x: (int(x[0]))) # int 안쓰면 나이의 앞자리로만 비교함
+for i in sl:
+    print(i[0], i[1])
