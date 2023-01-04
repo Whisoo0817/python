@@ -1,0 +1,20 @@
+import sys
+count = [0]*8001
+sorted_list = []
+for i in range(int(sys.stdin.readline())):
+    count[int(sys.stdin.readline())+4000] += 1
+for i in range(8001):
+    for k in range(count[i]):
+        sorted_list.append(i-4000)
+print(int(round(sum(sorted_list)/len(sorted_list),0)))
+print(sorted_list[len(sorted_list)//2])
+b=[]
+m=max(count)
+for i in range(8001):
+    if count[i]==m:
+        b.append(i-4000)
+if len(b)>1:
+    print(b[1])
+else:
+    print(b[0])
+print(max(sorted_list)-min(sorted_list))
