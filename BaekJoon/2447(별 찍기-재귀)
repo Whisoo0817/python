@@ -1,0 +1,14 @@
+def sol(N):
+    if N==1:
+        return ["*"]
+    last = sol(N//3)
+    L = []
+    for a in last:
+        L.append(a*3)
+    for a in last:
+        L.append(a+" "*len(last)+a)
+    for a in last:
+        L.append(a*3)
+    return L
+N=int(input())
+print('\n'.join(sol(N)))
