@@ -1,0 +1,21 @@
+# in 함수를 쓰면 O(n)이지만 딕셔너리에서 찾으면 O(1)
+
+import sys
+n,m=map(int,sys.stdin.readline().split())
+d = {}
+for i in range(n):
+    d[sys.stdin.readline().rstrip()] = i
+res = 0
+resl = []
+for i in range(m):
+    b = sys.stdin.readline().rstrip()
+    try:
+        l=d[b] #try문으로 indexError 오류 감지
+        resl.append(b)
+        res+=1
+    except:
+        continue
+print(res)
+resl.sort() #사전순으로!!!
+for i in resl:
+    print(i)
