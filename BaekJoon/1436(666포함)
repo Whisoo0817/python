@@ -1,0 +1,8 @@
+import sys
+n = int(sys.stdin.readline())
+first = 666
+while n>0:
+    if "666" in str(first):
+        n-=1
+    first+=1
+print(first-1)
