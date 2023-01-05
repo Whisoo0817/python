@@ -1,0 +1,16 @@
+#딕셔너리 두개 쓰기 (숫자용,문자용)
+
+import sys
+n,m=map(int,sys.stdin.readline().split())
+pocket = {}
+pocket2 = {}
+for i in range(n):
+    a = sys.stdin.readline().rstrip()
+    pocket[i+1] = a
+    pocket2[a] = i+1
+for j in range(m):
+    k = sys.stdin.readline().rstrip()
+    if 48<=ord(k[0])<=57:
+        print(pocket[int(k)])
+    else:
+        print(pocket2[k])
