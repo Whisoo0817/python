@@ -1,0 +1,22 @@
+import sys
+n = int(sys.stdin.readline())
+card = list(map(int,sys.stdin.readline().split()))
+m = int(sys.stdin.readline())
+check = list(map(int,sys.stdin.readline().split()))
+minNum=min(card)
+maxNum=max(card)
+count = [0] * (maxNum - minNum + 1)
+for i in range(n):
+    card[i] -= minNum
+    count[card[i]] = 1
+for i in range(m):
+    check[i] -= minNum
+maxCard=max(card)
+for i in check:
+    if i>=0 and i<=maxCard: # i<=maxCard 없으면 IndexError, i<=max(card)로 쓰면 시간초과
+        if count[i]==1:
+            print(1,end=' ')
+        else:
+            print(0,end=' ')
+    else:
+        print(0,end=' ')
