@@ -2,10 +2,8 @@ import sys
 s = sys.stdin.readline().strip()
 k = len(s)
 ans = set([])
-i = 0
-while i<k:
+for i in range(k):
     for j in range(i,k+1):
         if len(s[i:j])>=1:
             ans.add(s[i:j])
-    i+=1
 print(len(ans))
