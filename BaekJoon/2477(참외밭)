@@ -1,0 +1,34 @@
+# 중복된 수 3 2 3 2일 때, 가운데 2 3이 빼야 되는 작은 사각형
+#반례
+    # 3 60
+    # 2 20
+    # 3 100
+    # 1 50
+    # 4 160
+    # 2 30
+import sys
+k = int(sys.stdin.readline())
+x, y = [], []
+all = []
+for i in range(6):
+    dir, l = map(int,sys.stdin.readline().split())
+    all.append([dir,l])
+    if dir == 1 or dir == 2:
+        x.append(l)
+    else:
+        y.append(l)
+a = max(x) * max(y)
+b=0
+for i in range(3):
+    if all[i][0]==all[i+2][0] and all[i+1][0]==all[i+3][0]:
+        b=all[i+1][1]*all[i+2][1]
+        break
+if b==0:
+    all.append([all[0][0],all[0][1]]) #앞의 3개를 뒤로 보내버림
+    all.append([all[1][0],all[1][1]])
+    all.append([all[2][0],all[2][1]])
+    for i in range(3,6):
+        if all[i][0]==all[i+2][0] and all[i+1][0]==all[i+3][0]:
+            b=all[i+1][1]*all[i+2][1]
+            break
+print(k*(a-b))
