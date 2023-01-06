@@ -4,6 +4,5 @@ k = len(s)
 ans = set([])
 for i in range(k):
     for j in range(i,k+1):
-        if len(s[i:j])>=1:
-            ans.add(s[i:j])
-print(len(ans))
+        ans.add(s[i:j])
+print(len(ans)-1) #공백
