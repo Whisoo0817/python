@@ -1,0 +1,10 @@
+#최대공약수, 최소공배수 => 유클리드 호제법 사용하기
+import sys
+a, b = map(int, sys.stdin.readline().split())
+def sol(x,y): #최대공약수
+    while y>0:
+        x, y = y, x % y
+    return x
+i = sol(a,b)
+print(i)
+print(a*b // i) #최소공배수
