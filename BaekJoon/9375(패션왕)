@@ -1,0 +1,19 @@
+import sys
+t = int(sys.stdin.readline())
+for _ in range(t):
+    n = int(sys.stdin.readline())
+    clothes = {}
+    for i in range(n):
+        a,b=sys.stdin.readline().split()
+        if clothes.get(b)==None:
+            clothes[b]=1
+        else:
+            clothes[b]+=1
+    numl = []
+    for i in clothes:
+        numl.append(clothes[i])
+    res = 1
+    for i in numl:
+        res*=(i+1) #옷 종류마다의 가짓수 + 1(그 종류를 착용안하는 경우의 수)
+    res-=1 (알몸)
+    print(res)
