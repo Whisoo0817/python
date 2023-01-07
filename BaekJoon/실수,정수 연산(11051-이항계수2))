@@ -1,0 +1,8 @@
+from math import factorial
+n, k = map(int, input().split())
+result = factorial(n) // (factorial(k) * factorial(n - k))
+print(result % 10007)
+# 라인 3에서 /을 쓰면 float가 되어 매우 큰수이면 오차가 생겨버림(부동소수점) => //사용
+#실수 연산은 대략 15자리 정도의 정밀도를 가지는데 1000!은 대략 2500자리 수임
+
+#원래는 팩토리얼 말고 dp-메모이제이션(파스칼 삼각형) 쓰는 문제임
