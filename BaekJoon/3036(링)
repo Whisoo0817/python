@@ -1,0 +1,16 @@
+import sys
+n = int(sys.stdin.readline())
+a = list(map(int,sys.stdin.readline().split()))
+def g(x,y):
+    while y!=0:
+        x,y = y,x%y
+    return x
+for i in range(n-1):
+    x,y=a[0],a[i+1]
+    while True:
+        k = g(x,y)
+        if k==1:
+            print(''.join([str(x),"/",str(y)]))
+            break
+        x=a[0]//k
+        y=a[i+1]//k
