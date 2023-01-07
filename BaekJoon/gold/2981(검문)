@@ -1,0 +1,43 @@
+#a%m 과 b%m이 같으려면 (a-b)이 m의 배수임
+# 4%3=1
+# 7%3=1
+# 10%3=1
+import sys
+n = int(sys.stdin.readline())
+a = []
+for _ in range(n):
+    a.append(int(sys.stdin.readline()))
+def sol(a):
+    new = []
+    for i in range(len(a)-1):
+        new.append(abs(a[i]-a[i+1]))
+    return new
+a = sol(a)
+def sol2(x,y): #최대공약수
+    while y>0:
+        x, y = y, x % y
+    return x
+m = len(a)
+while len(a)>1:
+    new = []
+    for i in range(len(a)//2):
+        new.append(sol2(a[i],a[i+1]))
+    if len(a)%2==1:
+        new.append(a[-1])
+    a=new
+k = a[0]
+result = []
+for i in range(2,int(k**0.5)+1):
+    if k%i==0:
+        result.append(i)
+        result.append(k//i)
+result.append(k)
+result = list(set(result)) # set으로 만들면 정렬 엉망됨
+result.sort()
+for i in result:
+    print(i,end=' ')
+
+#반례1
+# 2
+# 99999990
+# 999999891
