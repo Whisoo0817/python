@@ -1,0 +1,13 @@
+#값이 매우 높아서 1부터 확인 불가능 => 2^1, 2^2 ,...의 배수가 몇개인지 
+import sys
+n,m = map(int,sys.stdin.readline().split())
+def howmany(n,k):
+    sum = 0
+    i=1
+    while n**i<=k:
+        sum+=(k//n**i) # ex) 48: 2^4 * 3 -> 2의배수,4의배수,8,16 => 4
+        i+=1
+    return sum
+two = howmany(2,n)-howmany(2,m)-howmany(2,n-m)
+five = howmany(5,n)-howmany(5,m)-howmany(5,n-m)
+print(min(two,five))
