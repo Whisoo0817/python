@@ -1,0 +1,27 @@
+# NxN에서 N개면 각 행에 하나씩 있음!!
+import sys
+n = int(sys.stdin.readline())
+row = [0]*n # *** 퀸이 행의 몇 열에 있는지
+visited = [False]*n # 열(column)에 퀸이 있는지 => 시간 줄이기
+res = 0
+def test(x):
+    for i in range(x): # 윗줄만 확인
+        if row[i]==row[x] or abs(i-x)==abs(row[i]-row[x]):
+            return False
+    return True
+def queen(x): # x = row
+    global res
+    if x==n:
+        res += 1
+        return
+    else:
+        for i in range(n):
+            if visited[i]:
+                continue
+            row[x] = i
+            if test(x):
+                visited[i] = True
+                queen(x+1)
+                visited[i] = False
+queen(0)
+print(res)
