@@ -1,0 +1,21 @@
+import sys
+from itertools import combinations
+n = int(sys.stdin.readline())
+a = []
+for i in range(n):
+    a.append(list(map(int,sys.stdin.readline().split())))
+res = []
+def stat(team):
+    statsum = 0
+    for i in range(len(team)-1):
+        for j in range(i+1,len(team)):
+            statsum += a[team[i]][team[j]]
+            statsum += a[team[j]][team[i]]
+    return statsum
+
+nl = [i for i in range(n)]
+nl2 = list(combinations(nl,len(nl)//2))
+m = len(nl2)
+for i in range(m//2):
+    res.append(abs(stat(list(nl2[i])) - stat(list(nl2[m-1-i]))))
+print(min(res))
