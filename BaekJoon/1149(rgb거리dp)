@@ -1,0 +1,7 @@
+import sys
+n = int(sys.stdin.readline())
+dp = [[0,0,0]]
+for i in range(n):
+    r,g,b = map(int,sys.stdin.readline().split())
+    dp.append([r+min(dp[i][1],dp[i][2]), g+min(dp[i][0],dp[i][2]), b+min(dp[i][0],dp[i][1])])
+print(min(dp[n]))
