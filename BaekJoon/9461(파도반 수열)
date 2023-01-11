@@ -1,0 +1,14 @@
+import sys
+t = int(sys.stdin.readline())
+p = [0,1,1,1,2,2,3,4,5,7,9]
+for _ in range(90):
+    p.append(0)
+def sol(n):
+    if p[n]!=0:
+        return p[n]
+    if n>=5:
+        p[n] = sol(n-1)+sol(n-5)
+        return p[n]
+for i in range(t):
+    n = int(sys.stdin.readline())
+    print(sol(n))
