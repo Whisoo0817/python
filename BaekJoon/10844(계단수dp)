@@ -1,0 +1,13 @@
+import sys
+n = int(sys.stdin.readline())
+dp = [[0]*10 for _ in range(n+1)]
+dp[1] = [0,1,1,1,1,1,1,1,1,1]
+def sol(n):
+    if n==1:
+        return 9
+    dp[n][0],dp[n][9] = dp[n-1][1],dp[n-1][8]
+    for i in range(1,9):
+        dp[n][i] = (dp[n-1][i-1]+dp[n-1][i+1])%1000000000
+for i in range(2,n+1):
+    sol(i)
+print(sum(dp[n])%1000000000)
