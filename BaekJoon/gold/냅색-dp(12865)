@@ -1,0 +1,36 @@
+#item 수량 1개
+# => item리스트를 추가한 2차원배열 dp
+# => for문(가방무게):  
+#       for문(사용가능item): #여기서 item을 하나씩 넣어보며 dp값 갱신 => 아이템 중복x 
+             #item[0:j]
+import sys
+n,k = map(int,sys.stdin.readline().split())
+item=[]
+for i in range(n):
+    w,v = map(int,sys.stdin.readline().split())
+    item.append([w,v])
+item.sort()
+dp = [[0]*(k+1) for _ in range(n+1)]
+for i in range(1,k+1):
+    for j in range(1,n+1):
+        dp[j][i] = dp[j-1][i] #중요
+        if item[j-1][0] <= i:
+            dp[j][i] = max(dp[j][i], dp[j-1][i-item[j-1][0]] + item[j-1][1])
+                                      # j-1 중요 => 아이템 중복 x
+print(dp[-1][-1])
+
+#ㅡㅡㅡㅡㅡ무한냅색ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+import sys
+n,k = map(int,sys.stdin.readline().split())
+item=[]
+for i in range(n):
+    w,v = map(int,sys.stdin.readline().split())
+    item.append([w,v])
+item.sort()
+dp = [0]*(k+1)
+for i in range(1,k+1):
+    for j in item:
+        if j[0] <= i:
+            dp[i] = max(dp[i],dp[i-j[0]]+j[1])
+print(dp[-1])
+
