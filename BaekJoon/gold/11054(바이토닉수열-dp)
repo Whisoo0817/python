@@ -1,0 +1,18 @@
+import sys
+n = int(sys.stdin.readline())
+a = list(map(int,sys.stdin.readline().split()))
+dp = [1]*n
+def sol(a,dp):
+    for i in range(n):
+        for j in range(i):
+            if a[j]<a[i]:
+                dp[i]=max(dp[i],dp[j]+1)
+sol(a,dp)
+dp2 = [1]*n
+a2 = list(reversed(a))
+sol(a2,dp2)
+dp2 = list(reversed(dp2))
+res=[]
+for i in range(n):
+    res.append(dp[i]+dp2[i])
+print(max(res)-1)
