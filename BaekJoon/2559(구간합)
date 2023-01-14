@@ -1,0 +1,9 @@
+import sys
+n,k = map(int,sys.stdin.readline().split())
+a = list(map(int,sys.stdin.readline().split()))
+dp=[0]
+for i in range(k):
+    dp[0]+=a[i]
+for i in range(k,n):
+    dp.append(dp[-1]+a[i]-a[i-k])
+print(max(dp))
