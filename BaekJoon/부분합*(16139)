@@ -1,0 +1,16 @@
+#pypy3으로 제출해야 100
+import sys
+s = list(sys.stdin.readline().rstrip())
+q = int(sys.stdin.readline())
+dp = [[0]*26 for i in range(len(s))]
+dp[0][ord(s[0])-97] = 1
+for i in range(1,len(s)): # O(N)
+    dp[i][ord(s[i])-97] = 1
+    for j in range(26): # O(1)
+        dp[i][j] += dp[i-1][j]
+for _ in range(q):
+    a,i,j = sys.stdin.readline().split()
+    if i=='0':
+        print(dp[int(j)][ord(a)-97])
+    else:
+        print(dp[int(j)][ord(a)-97] - dp[int(i)-1][ord(a)-97])
