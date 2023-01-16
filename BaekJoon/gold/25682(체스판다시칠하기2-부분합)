@@ -1,0 +1,58 @@
+https://velog.io/@030831/%EB%B0%B1%EC%A4%80-25682-%EC%B2%B4%EC%8A%A4%ED%8C%90-%EB%8B%A4%EC%8B%9C-%EC%B9%A0%ED%95%98%EA%B8%B0-2-Python
+
+import sys
+input = sys.stdin.readline
+n, m, k = map(int,input().split())
+chess = []
+for i in range(n):
+    chess.append(list(input().rstrip()))
+def sol(color):
+    board = [[0]*m for _ in range(n)]
+    board2 = [[0] * m for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            if (i+j)%2==0:
+                if chess[i][j] == color:
+                    board[i][j] = 1
+                    board2[i][j] = 1
+                else:
+                    board[i][j] = 0
+                    board2[i][j] = 0
+            else:
+                if chess[i][j] != color:
+                    board[i][j] = 1
+                    board2[i][j] = 1
+                else:
+                    board[i][j] = 0
+                    board2[i][j] = 0
+    # print()
+    # for i in board:
+    #     print(i)
+    for i in range(n):
+        for j in range(k-1,m):
+            if j==k-1:
+                for l in range(k-1):
+                    board2[i][j]+=board[i][l]
+            else:
+                board2[i][j]+= (board2[i][j-1]-board[i][j-k])
+    # print()
+    # for i in board2:
+    #     print(i)
+    for i in range(k-1,m): #가로
+        for j in range(k-1,n): #세로
+            if j==k-1:
+                board[j][i] = board2[j][i]
+                for l in range(k-1):
+                    board[j][i] += board2[l][i]
+            else:
+                board[j][i] = board2[j][i]+ board[j-1][i]-board2[j-k][i]
+    # print()
+    # for i in board:
+    #     print(i)
+    res = 0
+    for i in range(k-1,n):
+        for j in range(k-1,m):
+            if board[i][j] > res:
+                res = board[i][j]
+    return k*k-res
+print(min(sol('B'),sol('W')))
