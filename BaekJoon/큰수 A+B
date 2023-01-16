@@ -1,0 +1,7 @@
+<참고!!>
+https://velog.io/@dominergrace/%EB%B0%B1%EC%A4%80-10757%EB%B2%88
+
+문제 10757번
+
+
+print(eval(input().replace(' ','+')))
