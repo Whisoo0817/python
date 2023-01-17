@@ -1,0 +1,16 @@
+import sys
+input = sys.stdin.readline
+n, k = map(int,input().split())
+money = [int(input()) for _ in range(n)]
+money.reverse()
+res = 0
+while k!=0:
+    for i in money:
+        if i<=k:
+            res+=k//i
+            k = k%i
+            money.remove(i)
+        else:
+            money.remove(i)
+        break
+print(res)
