@@ -1,0 +1,12 @@
+import sys
+input = sys.stdin.readline
+n = int(input())
+dist = list(map(int,input().split()))
+cost = [1e9] + list(map(int,input().split()))
+temp = 0
+res = 0
+for i in range(n-1):
+    if cost[i+1] <= cost[temp]:
+        temp+=1
+    res += cost[temp] * dist[i]
+print(res)
